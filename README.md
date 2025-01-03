@@ -1,7 +1,7 @@
 # JWT Library
 
 This library provides an API for working with [JSON Web Token](https://datatracker.ietf.org/doc/html/rfc7519),
-using [jwt-go](github.com/golang-jwt/jwt).
+using [jwt-go](https://github.com/golang-jwt/jwt).
 
 ## What the heck is a JWT?
 
