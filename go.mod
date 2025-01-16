@@ -1,4 +1,4 @@
-module github.com/mkbeh/jwt
+module github.com/mkbeh/xjwt
 
 go 1.23.2
 

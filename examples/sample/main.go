@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	tm "github.com/mkbeh/jwt"
+	tm "github.com/mkbeh/xjwt"
 )
 
 var tokenManager *tm.TokenManager

@@ -30,19 +30,19 @@ reserved keys and the proper way to add your own.
    below to add `jwt-go` as a dependency in your Go program.
 
 ```sh
-go get -u github.com/mkbeh/jwt
+go get -u github.com/mkbeh/xjwt
 ```
 
 2. Import it in your code:
 
 ```go
-import "github.com/mkbeh/jwt"
+import "github.com/mkbeh/xjwt"
 ```
 
 ## Usage
 
 A detailed usage guide, including how to sign and verify tokens can be found
-in [examples](https://github.com/mkbeh/jwt/tree/main/examples).
+in [examples](https://github.com/mkbeh/xjwt/tree/main/examples).
 
 ```go
 package main
@@ -51,7 +51,7 @@ import (
 	"fmt"
 
 	"github.com/golang-jwt/jwt/v5"
-	tm "github.com/mkbeh/jwt"
+	tm "github.com/mkbeh/xjwt"
 )
 
 func main() {
