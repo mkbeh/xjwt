@@ -1,3 +1,7 @@
+# 0.1.4 (June 9, 2025)
+
+* build: bump dependencies
+
 # 0.1.2 (March 8, 2025)
 
 * build: bump go ver to 1.24
