@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	scheme = "bearer"
+	bearerScheme = "bearer"
 )
 
 type TokenManager struct {
@@ -47,16 +47,17 @@ func (t *TokenManager) CreateWithClaims(claims jwt.Claims) (string, error) {
 
 // ParseWithClaims parses, validates, verifies the signature and returns the parsed expClaims.
 func (t *TokenManager) ParseWithClaims(tokenString string, claims jwt.Claims) error {
-	splits := strings.SplitN(tokenString, " ", 2)
-	if len(splits) < 2 {
-		return fmt.Errorf("%w: split token string < 2", ErrInvalidToken)
+	rawToken, err := extractBearerToken(tokenString)
+	if err != nil {
+		return err
 	}
 
-	if !strings.EqualFold(splits[0], scheme) {
-		return fmt.Errorf("%w: token string must contains bearer scheme", ErrInvalidScheme)
-	}
-
-	token, err := jwt.ParseWithClaims(splits[1], claims, func(_ *jwt.Token) (interface{}, error) { return t.key, nil })
+	token, err := jwt.ParseWithClaims(rawToken, claims, func(token *jwt.Token) (interface{}, error) {
+		if token.Method.Alg() != t.method.Alg() {
+			return nil, fmt.Errorf("%w: unexpected signing method %q", ErrInvalidSignature, token.Header["alg"])
+		}
+		return t.key, nil
+	})
 	if err != nil {
 		switch {
 		case errors.Is(err, jwt.ErrSignatureInvalid):
@@ -73,4 +74,15 @@ func (t *TokenManager) ParseWithClaims(tokenString string, claims jwt.Claims) er
 	}
 
 	return nil
+}
+
+func extractBearerToken(tokenString string) (string, error) {
+	scheme, token, found := strings.Cut(tokenString, " ")
+	if !found {
+		return "", fmt.Errorf("%w: missing scheme", ErrInvalidToken)
+	}
+	if !strings.EqualFold(scheme, bearerScheme) {
+		return "", fmt.Errorf("%w: expected bearer scheme", ErrInvalidScheme)
+	}
+	return token, nil
 }

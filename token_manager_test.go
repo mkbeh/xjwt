@@ -50,7 +50,7 @@ func TestTokenManager_CreateWithClaims(t *testing.T) {
 	assert.NoError(t, err)
 
 	claims := &TestClaims{}
-	perr := tm.ParseWithClaims(fmt.Sprintf("%s %s", scheme, tokenStr), claims)
+	perr := tm.ParseWithClaims(fmt.Sprintf("%s %s", bearerScheme, tokenStr), claims)
 	assert.NoError(t, perr)
 
 	equalClaims(t, testClaims, claims)

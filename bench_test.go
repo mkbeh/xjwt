@@ -17,7 +17,7 @@ func BenchmarkTokenManager_CreateWithClaims(b *testing.B) {
 }
 
 func BenchmarkTokenManager_ParseWithClaims(b *testing.B) {
-	token := "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZXhwIjoyNjIxMjQwODQ3LCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjIsImN1c3RvbV9maWVsZCI6InRlc3QxIn0.gxnGdV4oRmmO3_KKUOlnEm-sJZmmlrlIAFVUIMRIZCI" //nolint:gosec // not credentials
+	token := "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZXhwIjoyNjIxMjQwODQ3LCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjIsImN1c3RvbV9maWVsZCI6InRlc3QxIn0.gxnGdV4oRmmO3_KKUOlnEm-sJZmmlrlIAFVUIMRIZCI"
 
 	tm, _ := New(WithSecretKey([]byte("secret")))
 	b.ResetTimer()
