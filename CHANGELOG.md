@@ -1,3 +1,7 @@
+# 0.1.7 (April 19, 2026)
+
+* build: bump versions
+
 # 0.1.6 (August 16, 2025)
 
 * build: bump go version to 1.25

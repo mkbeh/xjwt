@@ -23,8 +23,6 @@ func WithSecretKey(key []byte) Option {
 
 func WithSigningMethod(method jwt.SigningMethod) Option {
 	return optionFunc(func(t *TokenManager) {
-		if t.method != nil {
-			t.method = method
-		}
+		t.method = method
 	})
 }
