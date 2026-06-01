@@ -88,14 +88,14 @@ import "errors"
 
 err := manager.ParseWithClaims(tokenString, claims)
 switch {
-case errors.Is(err, xjwt.ErrInvalidToken):
-// malformed or missing token
-case errors.Is(err, xjwt.ErrInvalidScheme):
-// missing or wrong scheme (expected Bearer)
-case errors.Is(err, xjwt.ErrTokenExpired):
-// token is expired
-case errors.Is(err, xjwt.ErrInvalidSignature):
-// signature mismatch
+    case errors.Is(err, xjwt.ErrInvalidToken):
+    // malformed or missing token
+    case errors.Is(err, xjwt.ErrInvalidScheme):
+    // missing or wrong scheme (expected Bearer)
+    case errors.Is(err, xjwt.ErrTokenExpired):
+    // token is expired
+    case errors.Is(err, xjwt.ErrInvalidSignature):
+    // signature mismatch
 }
 ```
 
