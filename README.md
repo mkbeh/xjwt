@@ -1,5 +1,8 @@
 # xjwt
 
+![Go Version](https://img.shields.io/badge/go-1.26+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Lightweight wrapper around [golang-jwt/jwt](https://github.com/golang-jwt/jwt)
 that provides a clean API for creating and validating JSON Web Tokens.
 
